@@ -1,12 +1,42 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Calculadora de Tiempo de Trabajo</title>
+
+		<!-- SEO -->
+		<title>Work Time Calculator - Track Hours and Breaks</title>
+		<meta name="description" content="Calculate your work time by tracking start and end times, breaks, and get accurate net working hours. Simple, fast, and works offline." />
+		<meta name="keywords" content="work time calculator, break tracker, working hours, time tracking, productivity" />
+		<meta name="author" content="Break Calculator" />
+
+		<!-- Open Graph / Social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Work Time Calculator - Track Hours and Breaks" />
+		<meta property="og:description" content="Calculate your work time by tracking start and end times, breaks, and get accurate net working hours." />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Work Time Calculator" />
+		<meta name="twitter:description" content="Calculate your work time by tracking start and end times, breaks, and get accurate net working hours." />
+
+		<!-- Theme -->
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+
+		<script is:inline>
+			const getTheme = () => {
+				const stored = localStorage.getItem('theme');
+				if (stored === 'dark' || stored === 'light') return stored;
+				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			};
+			const theme = getTheme();
+			document.documentElement.classList.toggle('dark', theme === 'dark');
+		</script>
 	</head>
 	<body>
 		<slot />

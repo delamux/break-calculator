@@ -4,6 +4,7 @@ import { TimeInputSection } from './components/TimeInputSection';
 import { BreaksList } from './components/BreaksList';
 import { ResultsPanel } from './components/ResultsPanel';
 import { Button } from './components/Button';
+import { ThemeToggle } from './components/ThemeToggle';
 import { createCalculateWorkTimeUseCase } from '../factory';
 
 export function TimeCalculatorApp() {
@@ -32,9 +33,12 @@ export function TimeCalculatorApp() {
   return (
     <div className="min-h-screen bg-[hsl(var(--background))] py-8 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          Work Time Calculator
-        </h1>
+        <header className="flex items-center justify-between mb-8">
+          <h1 className="text-3xl font-bold">
+            Work Time Calculator
+          </h1>
+          <ThemeToggle />
+        </header>
 
         <TimeInputSection
           startTime={startTime}
