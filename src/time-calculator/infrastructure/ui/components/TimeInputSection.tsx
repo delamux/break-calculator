@@ -29,11 +29,11 @@ export function TimeInputSection({
 }: TimeInputSectionProps) {
   return (
     <div className="card p-6 space-y-4">
-      <h2 className="text-lg font-semibold">Hora de Entrada y Salida</h2>
+      <h2 className="text-lg font-semibold">Start and End Time</h2>
 
       <div className="space-y-4">
         <div>
-          <label className="label-text block mb-2">Entrada (ej: 923 o 9:23)</label>
+          <label className="label-text block mb-2">Start (e.g. 923 or 9:23)</label>
           <div className="flex gap-2">
             <Input
               value={startTime}
@@ -50,7 +50,7 @@ export function TimeInputSection({
         </div>
 
         <div>
-          <label className="label-text block mb-2">Salida (ej: 645 o 6:45)</label>
+          <label className="label-text block mb-2">End (e.g. 645 or 6:45)</label>
           <div className="flex gap-2">
             <Input
               value={endTime}

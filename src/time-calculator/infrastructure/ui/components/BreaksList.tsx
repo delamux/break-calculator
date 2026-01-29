@@ -51,7 +51,7 @@ export function BreaksList({
       </div>
 
       <Button onClick={onAddBreak} variant="secondary" className="w-full">
-        + Agregar Break
+        + Add Break
       </Button>
     </div>
   );

@@ -33,7 +33,7 @@ export function TimeCalculatorApp() {
     <div className="min-h-screen bg-[hsl(var(--background))] py-8 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
         <h1 className="text-3xl font-bold text-center mb-8">
-          Calculadora de Tiempo de Trabajo
+          Work Time Calculator
         </h1>
 
         <TimeInputSection
@@ -58,7 +58,7 @@ export function TimeCalculatorApp() {
         />
 
         <Button onClick={calculate} className="w-full text-lg py-3">
-          Calcular Tiempo
+          Calculate Time
         </Button>
 
         {error && (

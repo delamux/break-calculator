@@ -1,46 +1,67 @@
-# Astro Starter Kit: Basics
+# Break Calculator
 
-```sh
-pnpm create astro@latest -- --template basics
+A work time calculator that helps you track your working hours, breaks, and calculate net work time.
+
+## Features
+
+- Enter start and end times in flexible formats (e.g., `923`, `9:23`, `1547`)
+- Support for AM/PM time selection
+- Add multiple breaks:
+  - **Time Range**: Specify start and end times for a break
+  - **Direct Minutes**: Enter break duration in minutes
+- Automatic calculation of:
+  - Total time at work
+  - Total break time
+  - Net work time
+
+## Architecture
+
+This project follows **Hexagonal Architecture** (Clean Architecture) with clear separation of concerns:
+
+```
+src/time-calculator/
+├── domain/           # Business logic (entities, value objects, services)
+├── application/      # Use cases and ports
+└── infrastructure/   # UI components, adapters, and external integrations
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Domain Layer
+- **Value Objects**: `TimeOfDay`, `Duration`, `BreakType`
+- **Entities**: `Break`, `WorkSession`
+- **Services**: `TimeCalculationService`
 
-## 🚀 Project Structure
+### Application Layer
+- **Use Cases**: `CalculateWorkTimeUseCase`
+- **Ports**: `StoragePort`
 
-Inside of your Astro project, you'll see the following folders and files:
+### Infrastructure Layer
+- **Adapters**: `LocalStorageAdapter`, `LocalStorageWorkSessionRepository`
+- **UI**: Preact components with Tailwind CSS styling
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Tech Stack
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- [Astro](https://astro.build/) - Web framework
+- [Preact](https://preactjs.com/) - UI library
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Vitest](https://vitest.dev/) - Testing framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
 
-## 🧞 Commands
+## Commands
 
-All commands are run from the root of the project, from a terminal:
+| Command | Action |
+| :------ | :----- |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start dev server at `localhost:4321` |
+| `pnpm build` | Build for production to `./dist/` |
+| `pnpm preview` | Preview production build locally |
+| `pnpm test` | Run tests |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Usage
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Enter your **start time** (e.g., `930` for 9:30) and select AM/PM
+2. Enter your **end time** (e.g., `630` for 6:30) and select AM/PM
+3. Add breaks as needed:
+   - Click "+ Add Break"
+   - Choose "Time Range" or "Direct Minutes"
+   - Enter the break details
+4. Click "Calculate Time" to see your results

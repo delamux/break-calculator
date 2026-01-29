@@ -16,8 +16,8 @@ interface BreakItemProps {
 }
 
 const typeOptions = [
-  { value: 'TIME_RANGE', label: 'Rango de tiempo' },
-  { value: 'DIRECT_MINUTES', label: 'Minutos directos' },
+  { value: 'TIME_RANGE', label: 'Time Range' },
+  { value: 'DIRECT_MINUTES', label: 'Direct Minutes' },
 ];
 
 export function BreakItem({
@@ -42,7 +42,7 @@ export function BreakItem({
           options={typeOptions}
         />
         <Button variant="destructive" onClick={() => onRemove(id)}>
-          Eliminar
+          Remove
         </Button>
       </div>
 
@@ -51,13 +51,13 @@ export function BreakItem({
           <Input
             value={startTime}
             onChange={(v) => onStartTimeChange(id, v)}
-            placeholder="Inicio (ej: 1200)"
+            placeholder="Start (e.g. 1200)"
             className="flex-1"
           />
           <Input
             value={endTime}
             onChange={(v) => onEndTimeChange(id, v)}
-            placeholder="Fin (ej: 1300)"
+            placeholder="End (e.g. 1300)"
             className="flex-1"
           />
         </div>
@@ -65,7 +65,7 @@ export function BreakItem({
         <Input
           value={minutes}
           onChange={(v) => onMinutesChange(id, v)}
-          placeholder="Minutos (ej: 30)"
+          placeholder="Minutes (e.g. 30)"
         />
       )}
     </div>
