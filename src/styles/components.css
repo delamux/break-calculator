@@ -1,0 +1,68 @@
+@layer utilities {
+  .btn-primary {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium 
+           transition-colors focus-visible:outline-none focus-visible:ring-2 
+           focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 
+           disabled:pointer-events-none disabled:opacity-50
+           bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] 
+           hover:bg-[hsl(var(--primary))]/90 h-10 px-4 py-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium 
+           transition-colors focus-visible:outline-none focus-visible:ring-2 
+           focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 
+           disabled:pointer-events-none disabled:opacity-50
+           bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] 
+           hover:bg-[hsl(var(--secondary))]/80 h-10 px-4 py-2;
+  }
+
+  .btn-destructive {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium 
+           transition-colors focus-visible:outline-none focus-visible:ring-2 
+           focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 
+           disabled:pointer-events-none disabled:opacity-50
+           bg-[hsl(var(--destructive))] text-[hsl(var(--destructive-foreground))] 
+           hover:bg-[hsl(var(--destructive))]/90 h-9 px-3 py-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium 
+           transition-colors focus-visible:outline-none focus-visible:ring-2 
+           focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 
+           disabled:pointer-events-none disabled:opacity-50
+           hover:bg-[hsl(var(--accent))] hover:text-[hsl(var(--accent-foreground))] 
+           h-10 px-4 py-2;
+  }
+
+  .input-base {
+    @apply flex h-10 w-full rounded-md border border-[hsl(var(--input))] 
+           bg-[hsl(var(--background))] px-3 py-2 text-sm 
+           ring-offset-[hsl(var(--background))] 
+           file:border-0 file:bg-transparent file:text-sm file:font-medium 
+           placeholder:text-[hsl(var(--muted-foreground))] 
+           focus-visible:outline-none focus-visible:ring-2 
+           focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .select-base {
+    @apply flex h-10 w-full items-center justify-between rounded-md 
+           border border-[hsl(var(--input))] bg-[hsl(var(--background))] 
+           px-3 py-2 text-sm ring-offset-[hsl(var(--background))] 
+           placeholder:text-[hsl(var(--muted-foreground))] 
+           focus:outline-none focus:ring-2 focus:ring-[hsl(var(--ring))] 
+           focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .card {
+    @apply rounded-lg border border-[hsl(var(--border))] 
+           bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] 
+           shadow-sm;
+  }
+
+  .label-text {
+    @apply text-sm font-medium leading-none 
+           peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+}

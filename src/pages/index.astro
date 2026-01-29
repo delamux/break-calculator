@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { TimeCalculatorApp } from '../time-calculator/infrastructure/ui/TimeCalculatorApp';
+import { createCalculateWorkTimeUseCase } from '../time-calculator/infrastructure/factory';
+import '../styles/global.css';
+
+const useCase = createCalculateWorkTimeUseCase();
+---
+
+<Layout>
+	<TimeCalculatorApp client:load useCase={useCase} />
+</Layout>
