@@ -32,7 +32,7 @@ export function TimeCalculatorApp() {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))] py-8 px-4">
-      <div className="max-w-2xl mx-auto space-y-6">
+      <div className="max-w-4xl mx-auto space-y-6">
         <header className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">
             Work Time Calculator
@@ -40,26 +40,28 @@ export function TimeCalculatorApp() {
           <ThemeToggle />
         </header>
 
-        <TimeInputSection
-          startTime={startTime}
-          startPeriod={startPeriod}
-          endTime={endTime}
-          endPeriod={endPeriod}
-          onStartTimeChange={setStartTime}
-          onStartPeriodChange={setStartPeriod}
-          onEndTimeChange={setEndTime}
-          onEndPeriodChange={setEndPeriod}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <TimeInputSection
+            startTime={startTime}
+            startPeriod={startPeriod}
+            endTime={endTime}
+            endPeriod={endPeriod}
+            onStartTimeChange={setStartTime}
+            onStartPeriodChange={setStartPeriod}
+            onEndTimeChange={setEndTime}
+            onEndPeriodChange={setEndPeriod}
+          />
 
-        <BreaksList
-          breaks={breaks}
-          onAddBreak={addBreak}
-          onTypeChange={updateBreakType}
-          onStartTimeChange={updateBreakStartTime}
-          onEndTimeChange={updateBreakEndTime}
-          onMinutesChange={updateBreakMinutes}
-          onRemoveBreak={removeBreak}
-        />
+          <BreaksList
+            breaks={breaks}
+            onAddBreak={addBreak}
+            onTypeChange={updateBreakType}
+            onStartTimeChange={updateBreakStartTime}
+            onEndTimeChange={updateBreakEndTime}
+            onMinutesChange={updateBreakMinutes}
+            onRemoveBreak={removeBreak}
+          />
+        </div>
 
         <Button onClick={calculate} className="w-full text-lg py-3">
           Calculate Time
