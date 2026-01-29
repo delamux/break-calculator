@@ -32,7 +32,7 @@ export function BreaksList({
     <div className="card p-6 space-y-4">
       <h2 className="text-lg font-semibold">Breaks</h2>
 
-      <div className="space-y-3">
+      <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
         {breaks.map((breakItem) => (
           <BreakItem
             key={breakItem.id}
