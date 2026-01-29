@@ -1,4 +1,4 @@
-import { StoragePort } from '../../application/ports/StoragePort';
+import type { StoragePort } from '../../application/ports/StoragePort';
 
 export class LocalStorageAdapter implements StoragePort {
   async getItem(key: string): Promise<string | null> {

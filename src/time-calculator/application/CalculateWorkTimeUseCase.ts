@@ -1,4 +1,4 @@
-import { WorkSessionRepository } from '../domain/repositories/WorkSessionRepository';
+import type { WorkSessionRepository } from '../domain/repositories/WorkSessionRepository';
 import { WorkSession } from '../domain/entities/WorkSession';
 import { Break } from '../domain/entities/Break';
 import { TimeOfDay } from '../domain/value-objects/TimeOfDay';

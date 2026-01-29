@@ -1,15 +1,13 @@
-import { CalculateWorkTimeUseCase } from '../../application/CalculateWorkTimeUseCase';
+import { useMemo } from 'preact/hooks';
 import { useWorkSession } from './hooks/useWorkSession';
 import { TimeInputSection } from './components/TimeInputSection';
 import { BreaksList } from './components/BreaksList';
 import { ResultsPanel } from './components/ResultsPanel';
 import { Button } from './components/Button';
+import { createCalculateWorkTimeUseCase } from '../factory';
 
-interface TimeCalculatorAppProps {
-  useCase: CalculateWorkTimeUseCase;
-}
-
-export function TimeCalculatorApp({ useCase }: TimeCalculatorAppProps) {
+export function TimeCalculatorApp() {
+  const useCase = useMemo(() => createCalculateWorkTimeUseCase(), []);
   const {
     startTime,
     setStartTime,
