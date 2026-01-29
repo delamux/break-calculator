@@ -3,10 +3,36 @@ import { WorkSession } from '../domain/entities/WorkSession';
 import { Break } from '../domain/entities/Break';
 import { TimeOfDay } from '../domain/value-objects/TimeOfDay';
 import { TimeCalculationService } from '../domain/services/TimeCalculationService';
-import type { WorkSessionInputDTO, WorkTimeResultDTO } from './CalculateWorkTimeDTO';
+import type { WorkSessionInputDTO, WorkTimeResultDTO, StoredSessionDTO, StoredBreakDTO } from './CalculateWorkTimeDTO';
+import { BreakType } from '../domain/value-objects/BreakType';
 
 export class CalculateWorkTimeUseCase {
   constructor(private readonly repository: WorkSessionRepository) {}
+
+  async loadSession(): Promise<StoredSessionDTO | null> {
+    const session = await this.repository.findCurrent();
+    if (!session) return null;
+
+    const formatTime = (hours: number, minutes: number): string => {
+      return `${hours}:${minutes.toString().padStart(2, '0')}`;
+    };
+
+    const breaks: StoredBreakDTO[] = session.breaks.map((b) => ({
+      id: b.id.value,
+      type: b.type,
+      startTime: b.startTime ? formatTime(b.startTime.hours, b.startTime.minutes) : undefined,
+      endTime: b.endTime ? formatTime(b.endTime.hours, b.endTime.minutes) : undefined,
+      minutes: b.type === BreakType.DIRECT_MINUTES ? b.minutes : undefined,
+    }));
+
+    return {
+      startTime: formatTime(session.startTime.hours, session.startTime.minutes),
+      startPeriod: session.startPeriod,
+      endTime: formatTime(session.endTime.hours, session.endTime.minutes),
+      endPeriod: session.endPeriod,
+      breaks,
+    };
+  }
 
   async execute(input: WorkSessionInputDTO): Promise<WorkTimeResultDTO> {
     const startParsed = TimeCalculationService.parseTimeInput(input.startTimeInput);

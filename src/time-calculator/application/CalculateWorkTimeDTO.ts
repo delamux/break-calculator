@@ -21,3 +21,19 @@ export interface WorkTimeResultDTO {
   breakMinutes: number;
   workMinutes: number;
 }
+
+export interface StoredSessionDTO {
+  startTime: string;
+  startPeriod: 'AM' | 'PM';
+  endTime: string;
+  endPeriod: 'AM' | 'PM';
+  breaks: StoredBreakDTO[];
+}
+
+export interface StoredBreakDTO {
+  id: string;
+  type: 'TIME_RANGE' | 'DIRECT_MINUTES';
+  startTime?: string;
+  endTime?: string;
+  minutes?: number;
+}

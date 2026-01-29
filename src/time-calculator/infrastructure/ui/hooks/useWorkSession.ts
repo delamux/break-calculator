@@ -18,12 +18,39 @@ export function useWorkSession(useCase: CalculateWorkTimeUseCase) {
   const [breaks, setBreaks] = useState<BreakState[]>([]);
   const [result, setResult] = useState<WorkTimeResultDTO | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    if (breaks.length === 0) {
-      addBreak();
-    }
-  }, []);
+    if (initialized) return;
+
+    const loadSession = async () => {
+      const stored = await useCase.loadSession();
+      if (stored) {
+        setStartTime(stored.startTime);
+        setStartPeriod(stored.startPeriod);
+        setEndTime(stored.endTime);
+        setEndPeriod(stored.endPeriod);
+
+        if (stored.breaks.length > 0) {
+          const restoredBreaks: BreakState[] = stored.breaks.map((b) => ({
+            id: b.id,
+            type: b.type,
+            startTime: b.startTime ?? '',
+            endTime: b.endTime ?? '',
+            minutes: b.minutes !== undefined ? b.minutes.toString() : '',
+          }));
+          setBreaks(restoredBreaks);
+        } else {
+          addBreak();
+        }
+      } else {
+        addBreak();
+      }
+      setInitialized(true);
+    };
+
+    loadSession();
+  }, [initialized, useCase]);
 
   const addBreak = () => {
     const newBreak: BreakState = {
